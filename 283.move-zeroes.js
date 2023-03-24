@@ -10,22 +10,25 @@
  * @return {void} Do not return anything, modify nums in-place instead.
  */
 var moveZeroes = function(nums) {
-    let i = 0
-    let j = nums[nums.length - 1]
-    let placeHolder = 0
+  let i = 0;
+  let j = 0;
+  const n = nums.length;
 
-    while(i < nums.length) {
-        if(nums[i] !== 0) {
-            i += 1
-        } else if(nums[j] === 0  ) {
-            j -= 1
-        }
-        placeHolder = nums[i]
-        nums[i] = nums[j]
-        nums[j] = placeHolder
+  while (j < n) {
+    if (nums[j] !== 0) {
+      nums[i] = nums[j];
+      i++;
     }
-    return nums
-    
+    j++;
+  }
+  console.log(i)
+
+  while (i < n) {
+    nums[i] = 0;
+    i++;
+  }
+
 };
+console.log(moveZeroes([0,0,1,0,2,3,0,0,4]))
 // @lc code=end
 
