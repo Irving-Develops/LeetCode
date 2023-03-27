@@ -20,27 +20,24 @@
 var removeNthFromEnd = function(head, n) {
     let p1 = head
     let p2 = head
-    let count = n
+    let count = 0
 
-    while(count > 0) {
+    while(count < n) {
         p2 = p2.next
-        count--
+        count++
     }
 
+    // handle edge case where head needs to be removed
     if(!p2){
         return head.next
     }
 
-    let current = 1
-    while(p1) {
-        if(current + n === 0 ) {
-            p1.next = p1.next.next
-            break;
-        }else {
-            current++
-            p1 = p1.next
-        }
+    while(p2.next) {
+        p1 = p1.next
+        p2 = p2.next
     }
+
+    p1.next = p1.next.next
 
     return head
 };
